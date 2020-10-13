@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Finder</string>
+    <string name="user_label">Usuario</string>
+    <string name="user_placeholder">Correo electrónico</string>
+    <string name="password_label">Contraseña</string>
+    <string name="name">Nombre</string>
+    <string name="profile_label">Perfil</string>
+    <string name="login_label">Iniciar Sesión</string>
+    <string name="logout_label">Cerrar Sesión</string>
+    <string name="cancel_str">Cancelar</string>
+    <string name="accept_str">Aceptar</string>
+    <string name="locate_str">Localizar</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Bienvenido"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="finder">Finder©</string>
+    <string name="slogan">Tu garantía móvil segura en nuestras manos</string>
+    <string name="forgot_password">Token extraviado</string>
+    <string name="support">Solicitar Asistencia</string>
+    <string name="token">Token</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
