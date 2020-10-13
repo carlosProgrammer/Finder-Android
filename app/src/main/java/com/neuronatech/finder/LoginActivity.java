@@ -18,6 +18,10 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 
+import com.google.android.material.textfield.TextInputEditText;
+
+
+
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
@@ -28,6 +32,12 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar loadingProgressBar;
     private RelativeLayout loginView, afterAnimationView;
     Button loginBtn;
+    public static TextInputEditText tokenText;
+
+
+
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,13 +47,20 @@ public class LoginActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
+        TextInputEditText tokenText = (TextInputEditText) findViewById(R.id.passwordEditText);
+
+
+
         loginBtn = (Button) findViewById(R.id.loginBtn);
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openNewActivity();
             }
         });
+
+
 
 
 
@@ -67,7 +84,18 @@ public class LoginActivity extends AppCompatActivity {
         }.start();
     }
 
+    public void getTokenText(){
+        String token = tokenText.getText().toString();
+        String tokenText = token;
+        this.getTokenText();
+    }
+
+
+
+
     public void openNewActivity(){
+
+
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
