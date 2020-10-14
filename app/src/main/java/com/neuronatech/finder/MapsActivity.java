@@ -6,12 +6,8 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
-import com.google.android.material.textfield.TextInputEditText;
-import com.neuronatech.finder.LoginActivity;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
@@ -38,7 +34,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.time.LocalDateTime;
 
@@ -48,20 +43,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private RequestQueue mQueue;
     static Double lat, lng;
     FloatingActionButton callBtn;
-
-
-
+    Button locateBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-
-        Button locateBtn = findViewById(R.id.locateBtn);
-
         mQueue = Volley.newRequestQueue(this);
 
+        locateBtn = findViewById(R.id.locateBtn);
         locateBtn.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -83,7 +74,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(callIntent);
             }
         });
-
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -110,36 +100,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 JSONObject item = jsonArray.getJSONObject(i);
 
                                 String name = item.getString("name");
-                                //Integer id = item.getInt("id");
+                                String status = item.getString("online");
                                 lat = item.getDouble("lat");
                                 lng = item.getDouble("lng");
 
                                 LatLng coordinate = new LatLng(lat, lng);
 
                                 Marker marker = mMap.addMarker(new MarkerOptions()
-                                        .position(new LatLng(lat, lng)).title(name));
+                                        .position(new LatLng(lat, lng)).title(name)
+                                        .snippet("Conexión: " + status.toUpperCase()));
 
                                 BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.marker);
-
                                 marker.setIcon(icon);
 
                                 CameraPosition cameraPosition = new CameraPosition.Builder()
                                         .target(coordinate)
-                                        .zoom(17)
+                                        .zoom(18)
                                         .build();
-
                                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-
-
-
-
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -157,11 +139,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap = googleMap;
 
-        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
 
         jsonParseAndGet();
 
     }
-
-
 }

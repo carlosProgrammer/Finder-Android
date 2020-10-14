@@ -1,14 +1,13 @@
 package com.neuronatech.finder;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,7 +19,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 
 import java.time.LocalDateTime;
 
@@ -71,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                                 Number lat = item.getDouble("lat");
                                 Number lng = item.getDouble("lng");
 
-                                mTextViewResult.append(name  + ", " + String.valueOf(lat) + String.valueOf(lng) +  "\n\n");
+                                mTextViewResult.append(name  + ", " + lat + lng +  "\n\n");
 
                             }
                         } catch (JSONException e) {

@@ -1,9 +1,5 @@
 package com.neuronatech.finder;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,27 +13,19 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
-
-import com.google.android.material.textfield.TextInputEditText;
-
-
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 
 public class LoginActivity extends AppCompatActivity {
-
     private ImageView logoIcon;
     private ProgressBar loadingProgressBar;
     private RelativeLayout loginView, afterAnimationView;
     Button loginBtn;
-    public static TextInputEditText tokenText;
-
-
-
-
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,22 +35,13 @@ public class LoginActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-        TextInputEditText tokenText = (TextInputEditText) findViewById(R.id.passwordEditText);
-
-
-
         loginBtn = (Button) findViewById(R.id.loginBtn);
-
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openNewActivity();
             }
         });
-
-
-
-
 
         initViews();
         new CountDownTimer(3000, 1000) {
@@ -83,15 +62,6 @@ public class LoginActivity extends AppCompatActivity {
 
         }.start();
     }
-
-    public void getTokenText(){
-        String token = tokenText.getText().toString();
-        String tokenText = token;
-        this.getTokenText();
-    }
-
-
-
 
     public void openNewActivity(){
 
